@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System;
 
 namespace UserInterface
 {
@@ -10,9 +8,14 @@ namespace UserInterface
 		[SerializeField]
 		private Text textOutputComponent;
 
-		public override void UpdateValue(string newValue)
+		protected override void OnUpdate(string newValue)
 		{
 			textOutputComponent.text = newValue;
+		}
+
+		protected override bool ShouldUpdate(ref string prospectiveNewValue)
+		{
+			return textOutputComponent.text == prospectiveNewValue;
 		}
 	}
 }
